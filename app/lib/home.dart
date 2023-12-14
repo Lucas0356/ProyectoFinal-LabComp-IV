@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/continent_view.dart';
 import 'package:proyecto_final/mapa.dart';
+import 'package:proyecto_final/pais.dart';
 
 class HomeScreen extends StatefulWidget {
   static const name = 'home-screen';
@@ -24,56 +26,22 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = index;
           });
         },
-        children: const [
-          ContinentScreen(continent: Continent.america),
-          ContinentScreen(continent: Continent.africa),
+        physics: NeverScrollableScrollPhysics(), // Esto deshabilita el desplazamiento manual
+        children: [
+          ContinentView(paises: paisesAmerica, continentName: 'América',), // Mostrará países de América
+          ContinentView(paises: paisesAfrica, continentName: 'África',),  // Mostrará países de África
         ],
       ),
-      /* bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavBarFb1(
         currentIndex: _currentIndex,
-        onTap: (index) {
+        onPageChanged: (index) {
           _pageController.animateToPage(
             index,
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
           );
         },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.public),
-            label: 'América',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.public),
-            label: 'África',
-          ),
-        ],
-      ),*/
-      bottomNavigationBar: BottomNavBarFb1(),
-    );
-  }
-}
-
-class ContinentScreen extends StatelessWidget {
-  final Continent continent;
-
-  const ContinentScreen({Key? key, required this.continent}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: continent == Continent.america ? Colors.blue : Colors.green,
-      child: Center(
-        child: Text(
-          continent == Continent.america ? 'América' : 'África',
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
       ),
     );
   }
-}
-
-enum Continent {
-  america,
-  africa,
 }

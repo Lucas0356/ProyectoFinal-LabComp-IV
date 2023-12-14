@@ -7,6 +7,15 @@ class BottomNavBarFb1 extends StatelessWidget {
   final backgroundColor = const Color(0xffffffff);
   final errorColor = const Color(0xffEF4444);
 
+  final int currentIndex;
+  final ValueChanged<int> onPageChanged;
+
+  const BottomNavBarFb1({
+    Key? key,
+    required this.currentIndex,
+    required this.onPageChanged,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -20,20 +29,23 @@ class BottomNavBarFb1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconBottomBar(
-                  text: "América",
-                  icon: Icons.public,
-                  selected: false,
-                  onPressed: () {}),
+                text: "América",
+                icon: Icons.public,
+                selected: currentIndex == 0,
+                onPressed: () => onPageChanged(0),
+              ),
               IconBottomBar2(
-                  text: "Home",
-                  icon: Icons.home,
-                  selected: true,
-                  onPressed: () {}),
+                text: "Home",
+                icon: Icons.home,
+                selected: currentIndex == 1,
+                onPressed: () => onPageChanged(1),
+              ),
               IconBottomBar(
-                  text: "África",
-                  icon: Icons.public,
-                  selected: false,
-                  onPressed: () {}),
+                text: "África",
+                icon: Icons.public,
+                selected: currentIndex == 2,
+                onPressed: () => onPageChanged(2),
+              ),
             ],
           ),
         ),
@@ -41,6 +53,7 @@ class BottomNavBarFb1 extends StatelessWidget {
     );
   }
 }
+
 
 class IconBottomBar extends StatelessWidget {
   const IconBottomBar(
