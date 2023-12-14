@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/continent_view.dart';
-import 'package:proyecto_final/mapa.dart';
+import 'package:proyecto_final/bottom_navigation.dart';
 import 'package:proyecto_final/pais.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,13 +26,20 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = index;
           });
         },
-        physics: NeverScrollableScrollPhysics(), // Esto deshabilita el desplazamiento manual
+        physics:
+            NeverScrollableScrollPhysics(), // Esto deshabilita el desplazamiento manual
         children: [
-          ContinentView(paises: paisesAmerica, continentName: 'América',), // Mostrará países de América
-          ContinentView(paises: paisesAfrica, continentName: 'África',),  // Mostrará países de África
+          ContinentView(
+            paises: paisesAmerica,
+            continentName: 'América',
+          ), // Mostrará países de América
+          ContinentView(
+            paises: paisesAfrica,
+            continentName: 'África',
+          ), // Mostrará países de África
         ],
       ),
-      bottomNavigationBar: BottomNavBarFb1(
+      bottomNavigationBar: BottomNavigation(
         currentIndex: _currentIndex,
         onPageChanged: (index) {
           _pageController.animateToPage(

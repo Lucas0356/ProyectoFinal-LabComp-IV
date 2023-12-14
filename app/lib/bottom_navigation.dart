@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BottomNavBarFb1 extends StatelessWidget {
+class BottomNavigation extends StatelessWidget {
   final primaryColor = const Color(0xff4338CA);
   final secondaryColor = const Color(0xff6D28D9);
   final accentColor = const Color(0xffffffff);
@@ -10,7 +10,7 @@ class BottomNavBarFb1 extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onPageChanged;
 
-  const BottomNavBarFb1({
+  const BottomNavigation({
     Key? key,
     required this.currentIndex,
     required this.onPageChanged,
@@ -53,7 +53,6 @@ class BottomNavBarFb1 extends StatelessWidget {
     );
   }
 }
-
 
 class IconBottomBar extends StatelessWidget {
   const IconBottomBar(

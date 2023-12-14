@@ -5,7 +5,9 @@ class ContinentView extends StatelessWidget {
   final List<Pais> paises;
   final String continentName;
 
-  const ContinentView({Key? key, required this.paises, required this.continentName}) : super(key: key);
+  const ContinentView(
+      {Key? key, required this.paises, required this.continentName})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,10 @@ class _PaisTile extends StatelessWidget {
     return ListTile(
       title: Text(pais.name),
       subtitle: Text(pais.capital[0]),
-      leading: Text(pais.flag),
+      leading: Text(
+        pais.flag,
+        style: TextStyle(fontSize: 25),
+      ),
       onTap: () {
         // Navigator.push(context, MaterialPageRoute(builder: (context) => DetallesPaisScreen(pais: pais)));
       },
