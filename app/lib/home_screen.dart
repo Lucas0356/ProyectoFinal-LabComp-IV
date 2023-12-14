@@ -1,6 +1,8 @@
+// home_screen.dart
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/continent_view.dart';
 import 'package:proyecto_final/bottom_navigation.dart';
+import 'package:proyecto_final/continent_view.dart';
+import 'package:proyecto_final/home_view.dart';
 import 'package:proyecto_final/pais.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
-  int _currentIndex = 0;
+  int _currentIndex = 0; // Cambiar el valor inicial a 0
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +28,29 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = index;
           });
         },
-        physics:
-            NeverScrollableScrollPhysics(), // Esto deshabilita el desplazamiento manual
+        physics: NeverScrollableScrollPhysics(),
         children: [
+          // Página de Inicio
+          HomeView(onTap: () {
+            if (_currentIndex == 0) {
+              // Si ya estamos en la página de inicio, no hacemos nada
+              return;
+            }
+            _pageController.jumpToPage(0);
+            setState(() {
+              _currentIndex = 0;
+            });
+          }),
+
+          // Páginas de Continentes
           ContinentView(
             paises: paisesAmerica,
             continentName: 'América',
-          ), // Mostrará países de América
+          ),
           ContinentView(
             paises: paisesAfrica,
             continentName: 'África',
-          ), // Mostrará países de África
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigation(

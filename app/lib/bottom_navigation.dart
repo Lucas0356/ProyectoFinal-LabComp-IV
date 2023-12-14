@@ -31,14 +31,14 @@ class BottomNavigation extends StatelessWidget {
               IconBottomBar(
                 text: "América",
                 icon: Icons.public,
-                selected: currentIndex == 0,
-                onPressed: () => onPageChanged(0),
+                selected: currentIndex == 1,
+                onPressed: () => onPageChanged(1),
               ),
               IconBottomBar2(
                 text: "Home",
                 icon: Icons.home,
-                selected: currentIndex == 1,
-                onPressed: () => onPageChanged(1),
+                selected: currentIndex == 0,
+                onPressed: () => onPageChanged(0),
               ),
               IconBottomBar(
                 text: "África",
