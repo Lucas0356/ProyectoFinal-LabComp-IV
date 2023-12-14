@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'home.dart';
 
 void main() {
   runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      home: const HomeScreen(),
+      routes: {
+        '/home': (context) => const HomeScreen(), // Ruta para la pantalla Home
+      },
+      initialRoute: '/home', // Ruta inicial
     );
   }
 }
