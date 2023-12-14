@@ -17,3 +17,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/america.png
+    - assets/africa.png
+  fonts:
+    - family: Jost
+      fonts:
+        - asset: fonts/Jost-Bold.ttf
