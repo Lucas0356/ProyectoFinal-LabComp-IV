@@ -55,13 +55,14 @@ class BottomNavigation extends StatelessWidget {
 }
 
 class IconBottomBar extends StatelessWidget {
-  const IconBottomBar(
-      {Key? key,
-      required this.text,
-      required this.icon,
-      required this.selected,
-      required this.onPressed})
-      : super(key: key);
+  const IconBottomBar({
+    Key? key,
+    required this.text,
+    required this.icon,
+    required this.selected,
+    required this.onPressed,
+  }) : super(key: key);
+
   final String text;
   final IconData icon;
   final bool selected;
@@ -79,6 +80,13 @@ class IconBottomBar extends StatelessWidget {
           icon: Icon(
             icon,
             size: 25,
+            color: selected ? primaryColor : Colors.black54,
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 10,
             color: selected ? primaryColor : Colors.black54,
           ),
         ),
