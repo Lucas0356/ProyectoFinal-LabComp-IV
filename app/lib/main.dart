@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: const HomeScreen(),
       routes: {
-        '/home': (context) => const HomeScreen(), // Ruta para la pantalla Home
+        '/home': (context) => const HomeScreen(),
       },
       initialRoute: '/home', // Ruta inicial
     );

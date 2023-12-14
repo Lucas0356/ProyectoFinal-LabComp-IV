@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/mapa.dart';
 
 class HomeScreen extends StatefulWidget {
   static const name = 'home-screen';
@@ -23,12 +24,12 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = index;
           });
         },
-        children: [
+        children: const [
           ContinentScreen(continent: Continent.america),
           ContinentScreen(continent: Continent.africa),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      /* bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           _pageController.animateToPage(
@@ -47,7 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'África',
           ),
         ],
-      ),
+      ),*/
+      bottomNavigationBar: BottomNavBarFb1(),
     );
   }
 }
@@ -64,7 +66,7 @@ class ContinentScreen extends StatelessWidget {
       child: Center(
         child: Text(
           continent == Continent.america ? 'América' : 'África',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
     );
