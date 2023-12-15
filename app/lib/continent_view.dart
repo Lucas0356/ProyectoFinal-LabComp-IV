@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/detalles_pais.dart';
 import 'package:proyecto_final/pais.dart';
 
 class ContinentView extends StatelessWidget {

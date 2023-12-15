@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -12,41 +14,44 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      color: Colors.white,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Flexible(
-              flex: 1,
-              child: IconBottomBar(
-                text: "América",
-                icon: Icons.public,
-                selected: currentIndex == 0,
-                onPressed: () => onPageChanged(0),
+    return SizedBox(
+      height: max(MediaQuery.of(context).size.height * 0.10, 90),
+      child: BottomAppBar(
+        color: Colors.white,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Flexible(
+                flex: 1,
+                child: IconBottomBar(
+                  text: "América",
+                  icon: Icons.public,
+                  selected: currentIndex == 0,
+                  onPressed: () => onPageChanged(0),
+                ),
               ),
-            ),
-            Flexible(
-              flex: 1,
-              child: IconBottomBar2(
-                text: "Home",
-                icon: Icons.home,
-                selected: currentIndex == 1,
-                onPressed: () => onPageChanged(1),
+              Flexible(
+                flex: 1,
+                child: IconBottomBar2(
+                  text: "Home",
+                  icon: Icons.home,
+                  selected: currentIndex == 1,
+                  onPressed: () => onPageChanged(1),
+                ),
               ),
-            ),
-            Flexible(
-              flex: 1,
-              child: IconBottomBar(
-                text: "África",
-                icon: Icons.public,
-                selected: currentIndex == 2,
-                onPressed: () => onPageChanged(2),
+              Flexible(
+                flex: 1,
+                child: IconBottomBar(
+                  text: "África",
+                  icon: Icons.public,
+                  selected: currentIndex == 2,
+                  onPressed: () => onPageChanged(2),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -94,6 +99,7 @@ class IconBottomBar extends StatelessWidget {
     );
   }
 }
+
 
 class IconBottomBar2 extends StatelessWidget {
   const IconBottomBar2(
