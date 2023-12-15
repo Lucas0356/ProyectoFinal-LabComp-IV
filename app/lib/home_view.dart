@@ -16,7 +16,8 @@ class HomeView extends StatelessWidget {
           margin:
               EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
           decoration: const BoxDecoration(
-            color: Color(0xFFD9D9D9), // Color de fondo del contenedor principal
+            color: Color.fromRGBO(
+                231, 231, 231, 1), // Color de fondo del contenedor principal
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50.0),
               topRight: Radius.circular(50.0),
@@ -29,16 +30,16 @@ class HomeView extends StatelessWidget {
                 'NationsExplorer',
                 style: TextStyle(
                     fontFamily: 'Jost', // Fuente que importamos
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 34,
+                    fontWeight: FontWeight.w600), // SemiBold
               ),
               SizedBox(height: 16),
               Text(
-                'Toda la info sobre países de:',
+                'All about countrys of',
                 style: TextStyle(
                     fontFamily: 'Jost', // Fuente que importamos
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400), // Regular
               ),
               SizedBox(height: 50),
               _ContainerPais(
@@ -62,11 +63,11 @@ class HomeView extends StatelessWidget {
 
 class _ContainerPais extends StatelessWidget {
   const _ContainerPais({
-    super.key,
+    Key? key,
     required this.asset,
     required this.text,
     required this.left,
-  });
+  }) : super(key: key);
 
   final String asset;
   final String text;
@@ -75,31 +76,46 @@ class _ContainerPais extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> row = [
-      Image.asset(
-        asset,
-        width: 110,
-        height: 110,
-        fit: BoxFit.cover,
+      Container(
+        margin: const EdgeInsets.only(
+            right: 16.0, left: 16.0),
+        child: Image.asset(
+          asset,
+          width: 110,
+          height: 110,
+          fit: BoxFit.cover,
+        ),
       ),
-      const SizedBox(width: 50), // Espacio entre el texto y la imagen
-      Text(text,
+      const Spacer(),
+      Container(
+        margin: const EdgeInsets.only(
+            right: 16.0, left: 16.0),
+        child: Text(
+          text,
           style: const TextStyle(
-              fontSize: 30,
-              fontFamily: 'Jost',
-              fontWeight: FontWeight.w500, // Fuente que importamos
-              color: Colors.white)),
+            fontSize: 30,
+            fontFamily: 'Jost',
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
+        ),
+      ),
     ];
 
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
-      height: 150,
-      decoration: BoxDecoration(
-        color: const Color(0xFF2F9BFF), // Color de fondo de África
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: left ? row : row.reversed.toList(),
+    return Padding(
+      padding:
+          const EdgeInsets.all(8.0), // Ajusta el valor según tus necesidades
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: 150,
+        decoration: BoxDecoration(
+          color: const Color(0xFF2F9BFF), // Color de fondo de África
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: left ? row : row.reversed.toList(),
+        ),
       ),
     );
   }
