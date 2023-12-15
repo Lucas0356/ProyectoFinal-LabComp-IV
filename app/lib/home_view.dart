@@ -78,7 +78,7 @@ class _ContainerPais extends StatelessWidget {
     List<Widget> row = [
       Container(
         margin: const EdgeInsets.only(
-            right: 16.0, left: 16.0),
+            right: 16.0, left: 16.0), // Margenes izq y der
         child: Image.asset(
           asset,
           width: 110,
@@ -89,7 +89,7 @@ class _ContainerPais extends StatelessWidget {
       const Spacer(),
       Container(
         margin: const EdgeInsets.only(
-            right: 16.0, left: 16.0),
+            right: 16.0, left: 16.0), // Margenes izq y der
         child: Text(
           text,
           style: const TextStyle(
@@ -104,7 +104,7 @@ class _ContainerPais extends StatelessWidget {
 
     return Padding(
       padding:
-          const EdgeInsets.all(8.0), // Ajusta el valor según tus necesidades
+          const EdgeInsets.all(8.0),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.8,
         height: 150,
