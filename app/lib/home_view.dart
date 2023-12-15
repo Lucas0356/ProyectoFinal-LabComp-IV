@@ -88,12 +88,12 @@ class _ContainerPais extends StatelessWidget {
       ),
       const Spacer(),
       Container(
-        margin: const EdgeInsets.only(
-            right: 16.0, left: 16.0), // Margenes izq y der
+        margin:
+            const EdgeInsets.symmetric(horizontal: 28), // Margenes izq y der
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 30,
+            fontSize: 40,
             fontFamily: 'Jost',
             fontWeight: FontWeight.w500,
             color: Colors.white,
@@ -103,8 +103,7 @@ class _ContainerPais extends StatelessWidget {
     ];
 
     return Padding(
-      padding:
-          const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.8,
         height: 150,

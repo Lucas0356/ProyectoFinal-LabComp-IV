@@ -15,8 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final PageController _pageController = PageController();
-  int _currentIndex = 1; // Cambiar el valor inicial a 0
+  final PageController _pageController = PageController(initialPage: 1);
+  int _currentIndex = 1; // Cambiar el valor inicial a 1
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         physics: NeverScrollableScrollPhysics(),
         children: [
-          // Páginas de Continentes
+          // Página de Continente América
           ContinentView(
             paises: paisesAmerica,
             continentName: 'América',
@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _currentIndex = 1;
             });
           }),
-
+          // Página de Continente África
           ContinentView(
             paises: paisesAfrica,
             continentName: 'África',
@@ -56,11 +56,20 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigation(
         currentIndex: _currentIndex,
         onPageChanged: (index) {
-          _pageController.animateToPage(
-            index,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-          );
+          // Si te moves a una página paralela a la actual, se hace la animación sino no.
+          if (_currentIndex - index == 1 ||
+              _currentIndex - index == -1 ||
+              _currentIndex - index == 0) {
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          } else {
+            _pageController.jumpToPage(
+              index,
+            );
+          }
         },
       ),
     );
