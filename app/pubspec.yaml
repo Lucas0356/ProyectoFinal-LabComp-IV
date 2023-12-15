@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  card_swiper: ^3.0.1
+  intl: ^0.18.1
+
+
 
 dev_dependencies:
   flutter_lints: ^2.0.0

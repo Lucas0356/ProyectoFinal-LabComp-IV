@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/detalles_pais.dart';
+import 'package:proyecto_final/pais.dart';
 import 'home_screen.dart';
 
 void main() {
@@ -14,6 +16,10 @@ class MainApp extends StatelessWidget {
       home: const HomeScreen(),
       routes: {
         '/home': (context) => const HomeScreen(),
+        '/registro': (context) {
+          final Pais pais = ModalRoute.of(context)?.settings.arguments as Pais;
+          return DetallesPaisScreen(pais: pais);
+        },
       },
       initialRoute: '/home', // Ruta inicial
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/detalles_pais.dart';
 import 'package:proyecto_final/pais.dart';
 
 class ContinentView extends StatelessWidget {
@@ -74,7 +75,11 @@ class _PaisTile extends StatelessWidget {
             ),
             minLeadingWidth: 40,
             onTap: () {
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => DetallesPaisScreen(pais: pais)));
+              Navigator.pushNamed(
+                context,
+                '/registro',
+                arguments: pais,
+              ); // Navega a la ruta '/detalle_2'
             },
           ),
         ),
