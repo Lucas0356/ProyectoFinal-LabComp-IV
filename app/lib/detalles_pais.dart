@@ -53,7 +53,7 @@ class _DetallesPaisScreenState extends State<DetallesPaisScreen> {
                   padding: const EdgeInsets.only(top: 20),
                   child: IconButton(
                     icon: Icon(Icons.favorite,
-                        color: selected ? Colors.red : Colors.white),
+                        color: selected ? Color(0xFF2F9BFF) : Colors.white),
                     onPressed: () {
                       setState(() {
                         selected = !selected; // Actualiza el estado

@@ -53,6 +53,7 @@ class _PaisTile extends StatelessWidget {
           child: ListTile(
             title: Text(
               pais.name,
+              overflow: TextOverflow.ellipsis, // Agregar elipsis si es necesario
               style: const TextStyle(
                   fontFamily: 'Jost', // Fuente que importamos
                   fontSize: 30,
@@ -65,12 +66,9 @@ class _PaisTile extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: Colors.white54)),
-            leading: Padding(
-              padding: const EdgeInsets.only(left: 10, top: 10),
-              child: Text(
-                pais.flag,
-                style: const TextStyle(fontSize: 35),
-              ),
+            leading: Text(
+              pais.flag,
+              style: const TextStyle(fontSize: 35),
             ),
             minLeadingWidth: 40,
             onTap: () {
@@ -78,7 +76,7 @@ class _PaisTile extends StatelessWidget {
                 context,
                 '/registro',
                 arguments: pais,
-              ); // Navega a la ruta '/detalle_2'
+              ); // Navega a la ruta '/registro' con los argumentos del país
             },
           ),
         ),
@@ -86,3 +84,4 @@ class _PaisTile extends StatelessWidget {
     );
   }
 }
+
