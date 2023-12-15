@@ -15,33 +15,38 @@ class BottomNavigation extends StatelessWidget {
     return BottomAppBar(
       color: Colors.white,
       child: SizedBox(
-        height: 56,
         width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 25.0, right: 25.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconBottomBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Flexible(
+              flex: 1,
+              child: IconBottomBar(
                 text: "América",
                 icon: Icons.public,
                 selected: currentIndex == 0,
                 onPressed: () => onPageChanged(0),
               ),
-              IconBottomBar2(
+            ),
+            Flexible(
+              flex: 1,
+              child: IconBottomBar2(
                 text: "Home",
                 icon: Icons.home,
                 selected: currentIndex == 1,
                 onPressed: () => onPageChanged(1),
               ),
-              IconBottomBar(
+            ),
+            Flexible(
+              flex: 1,
+              child: IconBottomBar(
                 text: "África",
                 icon: Icons.public,
                 selected: currentIndex == 2,
                 onPressed: () => onPageChanged(2),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -66,25 +71,26 @@ class IconBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          onPressed: onPressed,
-          icon: Icon(
-            icon,
-            size: 25,
-            color: selected ? primaryColor : Colors.black54,
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              icon,
+              color: selected ? primaryColor : Colors.black54,
+            ),
           ),
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 10,
-            color: selected ? primaryColor : Colors.black54,
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 10,
+              color: selected ? primaryColor : Colors.black54,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -110,7 +116,6 @@ class IconBottomBar2 extends StatelessWidget {
         onPressed: onPressed,
         icon: Icon(
           icon,
-          size: 25,
           color: Colors.white,
         ),
       ),
