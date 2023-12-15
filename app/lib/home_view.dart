@@ -15,14 +15,14 @@ class HomeView extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.9,
           margin:
               EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xFFD9D9D9), // Color de fondo del contenedor principal
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50.0),
               topRight: Radius.circular(50.0),
             ),
           ),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -35,53 +35,71 @@ class HomeView extends StatelessWidget {
               SizedBox(height: 16),
               Text(
                 'Toda la info sobre países de:',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                    fontFamily: 'Jost', // Fuente que importamos
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400),
               ),
-              SizedBox(height: 16),
-              Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF2F9BFF), // Color de fondo de América
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'america.png', // Ruta de la imagen de América
-                          width: 90,
-                          height: 90,
-                          fit: BoxFit.cover,
-                        ),
-                        Text('América'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF2F9BFF), // Color de fondo de África
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'africa.png', // Ruta de la imagen de África
-                          width: 90,
-                          height: 90,
-                          fit: BoxFit.cover,
-                        ),
-                        Text('África'),
-                      ],
-                    ),
-                  ),
-                ],
+              SizedBox(height: 50),
+              _ContainerPais(
+                asset: 'assets/america.png',
+                text: 'América',
+                left: true,
+              ),
+              SizedBox(height: 40),
+              _ContainerPais(
+                asset: 'assets/africa.png',
+                text: 'África',
+                left: false,
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _ContainerPais extends StatelessWidget {
+  const _ContainerPais({
+    super.key,
+    required this.asset,
+    required this.text,
+    required this.left,
+  });
+
+  final String asset;
+  final String text;
+  final bool left;
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> row = [
+      Image.asset(
+        asset,
+        width: 110,
+        height: 110,
+        fit: BoxFit.cover,
+      ),
+      const SizedBox(width: 50), // Espacio entre el texto y la imagen
+      Text(text,
+          style: const TextStyle(
+              fontSize: 30,
+              fontFamily: 'Jost',
+              fontWeight: FontWeight.w500, // Fuente que importamos
+              color: Colors.white)),
+    ];
+
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: 150,
+      decoration: BoxDecoration(
+        color: const Color(0xFF2F9BFF), // Color de fondo de África
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: left ? row : row.reversed.toList(),
       ),
     );
   }
