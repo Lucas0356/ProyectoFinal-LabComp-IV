@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
-  int _currentIndex = 0; // Cambiar el valor inicial a 0
+  int _currentIndex = 1; // Cambiar el valor inicial a 0
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +30,23 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         physics: NeverScrollableScrollPhysics(),
         children: [
-          // Página de Inicio
-          HomeView(onTap: () {
-            if (_currentIndex == 0) {
-              // Si ya estamos en la página de inicio, no hacemos nada
-              return;
-            }
-            _pageController.jumpToPage(0);
-            setState(() {
-              _currentIndex = 0;
-            });
-          }),
-
           // Páginas de Continentes
           ContinentView(
             paises: paisesAmerica,
             continentName: 'América',
           ),
+          // Página de Inicio
+          HomeView(onTap: () {
+            if (_currentIndex == 1) {
+              // Si ya estamos en la página de inicio, no hacemos nada
+              return;
+            }
+            _pageController.jumpToPage(1);
+            setState(() {
+              _currentIndex = 1;
+            });
+          }),
+
           ContinentView(
             paises: paisesAfrica,
             continentName: 'África',
