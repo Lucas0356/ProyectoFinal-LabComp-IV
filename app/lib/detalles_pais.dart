@@ -122,7 +122,7 @@ class _Pais extends StatelessWidget {
                   fontFamily: 'Jost',
                   fontSize: 20,
                   fontWeight: FontWeight.w200)),
-          trailing: Text(item.flag, style: const TextStyle(fontSize: 50)),
+          trailing: Text(item.flag, style: const TextStyle(fontSize: 30)),
         ),
         Container(
           height: 1,
@@ -242,14 +242,14 @@ class _MidRectangle extends StatelessWidget {
                 SizedBox(
                   width: 100,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 6),
                     child: Text(
                       '$datoFormateado',
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.clip,
                       style: const TextStyle(
-                          fontSize: 15,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           fontFamily: 'Jost'),
@@ -282,7 +282,7 @@ class _Rectangle extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: Container(
         width: 340,
-        height: 100,
+        height: 115,
         color: Colors.blue[400],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -309,10 +309,10 @@ class _Rectangle extends StatelessWidget {
                 SizedBox(
                     width: 200,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 6),
                       child: Text(
                         '$dato',
-                        maxLines: 2,
+                        maxLines: 3,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(

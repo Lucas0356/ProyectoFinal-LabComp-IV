@@ -16,8 +16,7 @@ class HomeView extends StatelessWidget {
           margin:
               EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
           decoration: const BoxDecoration(
-            color: Color.fromRGBO(
-                231, 231, 231, 1), // Color de fondo del contenedor principal
+            color: Color.fromRGBO(235, 235, 235, 1), // Color de fondo del contenedor principal
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50.0),
               topRight: Radius.circular(50.0),
