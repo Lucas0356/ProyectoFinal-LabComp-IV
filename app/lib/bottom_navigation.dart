@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatelessWidget {
-  final primaryColor = const Color(0xff4338CA);
-  final secondaryColor = const Color(0xff6D28D9);
-  final accentColor = const Color(0xffffffff);
-  final backgroundColor = const Color(0xffffffff);
-  final errorColor = const Color(0xffEF4444);
-
   final int currentIndex;
   final ValueChanged<int> onPageChanged;
 
@@ -68,7 +62,7 @@ class IconBottomBar extends StatelessWidget {
   final bool selected;
   final Function() onPressed;
 
-  final primaryColor = const Color(0xff4338CA);
+  final primaryColor = const Color(0xFF2F9BFF);
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +101,7 @@ class IconBottomBar2 extends StatelessWidget {
   final IconData icon;
   final bool selected;
   final Function() onPressed;
-  final primaryColor = const Color(0xff4338CA);
+  final primaryColor = const Color(0xFF2F9BFF);
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(

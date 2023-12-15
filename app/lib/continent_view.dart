@@ -13,9 +13,17 @@ class ContinentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70,
         automaticallyImplyLeading: false,
-        title:
-            Text(continentName), // Nombre del continente en la parte superior
+        backgroundColor: Color(0xFF2F9BFF),
+        title: Text(
+          continentName,
+          style: const TextStyle(
+              fontFamily: 'Jost', // Fuente que importamos
+              fontSize: 34,
+              fontWeight: FontWeight.w600,
+              color: Colors.white),
+        ), // Nombre del continente en la parte superior
       ),
       body: ListView.builder(
         itemCount: paises.length,
@@ -34,16 +42,43 @@ class _PaisTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(pais.name),
-      subtitle: Text(pais.capital[0]),
-      leading: Text(
-        pais.flag,
-        style: TextStyle(fontSize: 25),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(50),
+        child: Container(
+          color: Color(0xFF2F9BFF),
+          height: 90,
+          width: 200,
+          child: ListTile(
+            title: Text(
+              pais.name,
+              style: const TextStyle(
+                  fontFamily: 'Jost', // Fuente que importamos
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white),
+            ),
+            subtitle: Text(pais.capital[0],
+                style: const TextStyle(
+                    fontFamily: 'Jost', // Fuente que importamos
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white54)),
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 10, top: 10),
+              child: Text(
+                pais.flag,
+                style: const TextStyle(fontSize: 35),
+              ),
+            ),
+            minLeadingWidth: 40,
+            onTap: () {
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => DetallesPaisScreen(pais: pais)));
+            },
+          ),
+        ),
       ),
-      onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => DetallesPaisScreen(pais: pais)));
-      },
     );
   }
 }
