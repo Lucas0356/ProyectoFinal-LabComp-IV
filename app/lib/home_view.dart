@@ -77,8 +77,7 @@ class _ContainerPais extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> row = [
       Container(
-        margin: const EdgeInsets.only(
-            right: 16.0, left: 16.0), // Margenes izq y der
+        margin: EdgeInsets.only(left: left ? 20 : 0, right:  left ? 0 : 20),
         child: Image.asset(
           asset,
           width: 110,
@@ -88,8 +87,7 @@ class _ContainerPais extends StatelessWidget {
       ),
       const Spacer(),
       Container(
-        margin:
-            const EdgeInsets.symmetric(horizontal: 28), // Margenes izq y der
+        margin: EdgeInsets.only(left: left ? 0 : 20, right:  left ? 20 : 0),
         child: Text(
           text,
           style: const TextStyle(
@@ -108,11 +106,11 @@ class _ContainerPais extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.8,
         height: 150,
         decoration: BoxDecoration(
-          color: const Color(0xFF2F9BFF), // Color de fondo de África
+          color: const Color(0xFF2F9BFF),
           borderRadius: BorderRadius.circular(30.0),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: left ? row : row.reversed.toList(),
         ),
       ),
