@@ -43,10 +43,10 @@ Hemos definido el diseño de la aplicación utilizando la herramienta Figma, cre
 
   En esta pantalla, visualizamos todos los países obtenidos a través de la API. Dependiendo de la sección seleccionada (América o África), se renderizan los países correspondientes en una lista. Esto permite a      los usuarios tener una vista general y seleccionar el país de su interés.
 
-  ![Pantalla de Vista de Registros](/desing/pantalla_continent_view.png)
+  ![Pantalla de Vista de Registros](/desingn/pantalla_continent_view.png)
 
 - ### Pantalla de Visualización de un Registro:
 
   Esta pantalla presenta imágenes e información relevante del país seleccionado. Además, brinda la opción de dejar un "Me gusta" en la parte superior derecha de la pantalla.
 
-  ![Pantalla de Visualización de un Registr](/desing/pantalla_detalles_país.png)
+  ![Pantalla de Visualización de un Registr](/desingn/pantalla_detalles_país.png)
