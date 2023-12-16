@@ -1,9 +1,10 @@
-# <p align="center">Nations Explorer</p>
+### <p align="center">Nations Explorer</p>
+
 <p  align="center"><sub>Proyecto Final - Laboratorio de Computación IV</sub></p>
 
-<br>
+<hr></hr>
 
-## Descripción del proyecto
+### Descripción del proyecto
 
 Esta es una aplicación desarrollada en Flutter (orientada a dispositivos móviles), que se conecta con la API que desarrollamos en uno de los trabajos de la materia.
 
@@ -13,14 +14,14 @@ La API nos proporciona información sobre países de África y América.
 
 <hr></hr>
 
-## Integrantes 
+### Integrantes 
 
 - Martín Reser
 - Lucas Moltedo
 
 <hr></hr>
 
-## Estado del Proyecto
+### Estado del Proyecto
 
 [En Desarrollo]
 
@@ -28,17 +29,17 @@ Actualmente, nos encontramos en la fase de desarrollo de la aplicación. Hasta e
 
 <hr></hr>
 
-## Diseño de la Aplicación
+### Diseño de la Aplicación
 
 Hemos definido el diseño de la aplicación utilizando la herramienta Figma, creando diversas pantallas que mostraremos a continuación:
 
-- ### Pantalla de Inicio:
+- #### Pantalla de Inicio:
 
   La pantalla principal de la aplicación muestra el título y un eslogan. La parte inferior contiene una barra de navegación que permite el acceso a las distintas secciones.
 
   ![Pantalla de Inicio](/design/pantalla_home.png)
 
-- ### Pantalla de Vista de Registros:
+- #### Pantalla de Vista de Registros:
 
   En esta pantalla, visualizamos todos los países obtenidos a través de la API. Dependiendo de la sección seleccionada (América o África), se renderizan los países correspondientes en una lista. Esto permite a      los usuarios tener una vista general y seleccionar el país de su interés.
 
