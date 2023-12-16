@@ -45,7 +45,7 @@ Hemos definido el diseño de la aplicación utilizando la herramienta Figma, cre
 
   <img src="/design/pantalla_continent_view.png" alt="Pantalla de Vista de Registros" height="400">
 
-- ### Pantalla de Visualización de un Registro:
+- #### Pantalla de Visualización de un Registro:
 
   Esta pantalla presenta imágenes e información relevante del país seleccionado. Además, brinda la opción de dejar un "Me gusta" en la parte superior derecha de la pantalla.
 
