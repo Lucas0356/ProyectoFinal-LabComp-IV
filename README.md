@@ -36,17 +36,17 @@ Hemos definido el diseño de la aplicación utilizando la herramienta Figma, cre
 - #### Pantalla de Inicio:
 
   La pantalla principal de la aplicación muestra el título y un eslogan. La parte inferior contiene una barra de navegación que permite el acceso a las distintas secciones.
-
-  ![Pantalla de Inicio](/design/pantalla_home.png)
+  
+  <img src="/design/pantalla_home.png" alt="Pantalla de Inicio" height="400">
 
 - #### Pantalla de Vista de Registros:
 
   En esta pantalla, visualizamos todos los países obtenidos a través de la API. Dependiendo de la sección seleccionada (América o África), se renderizan los países correspondientes en una lista. Esto permite a      los usuarios tener una vista general y seleccionar el país de su interés.
 
-  ![Pantalla de Vista de Registros](/desingn/pantalla_continent_view.png)
+  <img src="/design/pantalla_continent_view.png" alt="Pantalla de Vista de Registros" height="400">
 
 - ### Pantalla de Visualización de un Registro:
 
   Esta pantalla presenta imágenes e información relevante del país seleccionado. Además, brinda la opción de dejar un "Me gusta" en la parte superior derecha de la pantalla.
 
-  ![Pantalla de Visualización de un Registr](/desingn/pantalla_detalles_país.png)
+  <img src="/design/pantalla_detalles_país.png" alt="Pantalla de Visualización de un Registro" height="400">
