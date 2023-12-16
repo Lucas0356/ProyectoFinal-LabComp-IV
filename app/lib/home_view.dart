@@ -1,8 +1,9 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
   final VoidCallback onTap;
-
+  final bool iniciando = true;
   const HomeView({Key? key, required this.onTap}) : super(key: key);
 
   @override
@@ -16,21 +17,25 @@ class HomeView extends StatelessWidget {
           margin:
               EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
           decoration: const BoxDecoration(
-            color: Color.fromRGBO(235, 235, 235, 1), // Color de fondo del contenedor principal
+            color: Color.fromRGBO(
+                235, 235, 235, 1), // Color de fondo del contenedor principal
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50.0),
               topRight: Radius.circular(50.0),
             ),
           ),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'NationsExplorer',
-                style: TextStyle(
-                    fontFamily: 'Jost', // Fuente que importamos
-                    fontSize: 34,
-                    fontWeight: FontWeight.w600), // SemiBold
+              FadeInDown(
+                duration: Duration(seconds: 1),
+                child: Text(
+                  'NationsExplorer',
+                  style: TextStyle(
+                      fontFamily: 'Jost', // Fuente que importamos
+                      fontSize: 34,
+                      fontWeight: FontWeight.w600), // SemiBold
+                ),
               ),
               SizedBox(height: 16),
               Text(
@@ -75,25 +80,31 @@ class _ContainerPais extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> row = [
-      Container(
-        margin: EdgeInsets.only(left: left ? 20 : 0, right:  left ? 0 : 20),
-        child: Image.asset(
-          asset,
-          width: 110,
-          height: 110,
-          fit: BoxFit.cover,
+      FadeIn(
+        duration: Duration(seconds: 4),
+        child: Container(
+          margin: EdgeInsets.only(left: left ? 20 : 0, right: left ? 0 : 20),
+          child: Image.asset(
+            asset,
+            width: 110,
+            height: 110,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
       const Spacer(),
-      Container(
-        margin: EdgeInsets.only(left: left ? 0 : 20, right:  left ? 20 : 0),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 40,
-            fontFamily: 'Jost',
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
+      FadeIn(
+        duration: Duration(seconds: 4),
+        child: Container(
+          margin: EdgeInsets.only(left: left ? 0 : 20, right: left ? 20 : 0),
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 40,
+              fontFamily: 'Jost',
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
           ),
         ),
       ),

@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   card_swiper: ^3.0.1
   intl: ^0.18.1
+  animate_do: ^3.1.2
+
 
 
 

@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:animate_do/animate_do.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/human_formats.dart';
@@ -111,19 +112,23 @@ class _Pais extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 10),
-        ListTile(
-          title: Text(item.name,
-              style: const TextStyle(
-                  fontFamily: 'Jost',
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold)),
-          subtitle: Text('Country of ${item.subregion}',
-              style: const TextStyle(
-                  fontFamily: 'Jost',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w200)),
-          trailing: Text(item.flag, style: const TextStyle(fontSize: 30)),
+        FadeInLeft(
+          duration: Duration(seconds: 1),
+          child: ListTile(
+            title: Text(item.name,
+                style: const TextStyle(
+                    fontFamily: 'Jost',
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold)),
+            subtitle: Text('Country of ${item.subregion}',
+                style: const TextStyle(
+                    fontFamily: 'Jost',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w200)),
+            trailing: Text(item.flag, style: const TextStyle(fontSize: 30)),
+          ),
         ),
+        // Separador horizontal
         Container(
           height: 1,
           width: MediaQuery.of(context).size.width * 0.9,
@@ -139,6 +144,7 @@ class _Pais extends StatelessWidget {
                 titulo: 'POPULATION',
                 dato: item.population,
                 icon: Icons.people,
+                delay: 250,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -150,6 +156,7 @@ class _Pais extends StatelessWidget {
                 titulo: 'CAPITAL',
                 dato: item.capital[0],
                 icon: Icons.location_city,
+                delay: 500,
               ),
             ],
           ),
@@ -163,6 +170,7 @@ class _Pais extends StatelessWidget {
                 titulo: 'CURRENCIES',
                 dato: item.currencies[0],
                 icon: Icons.monetization_on_rounded,
+                delay: 750,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -174,6 +182,7 @@ class _Pais extends StatelessWidget {
                 titulo: 'LANGUAGES',
                 dato: item.languages[0],
                 icon: Icons.language,
+                delay: 1000,
               ),
             ],
           ),
@@ -196,69 +205,74 @@ class _Pais extends StatelessWidget {
 }
 
 class _MidRectangle extends StatelessWidget {
-  const _MidRectangle({
-    required this.titulo,
-    required this.dato,
-    required this.icon,
-  });
+  const _MidRectangle(
+      {required this.titulo,
+      required this.dato,
+      required this.icon,
+      required this.delay});
 
   final String titulo;
   final dato;
   final IconData icon;
+  final int delay;
 
   @override
   Widget build(BuildContext context) {
     String datoFormateado =
         dato is int ? HumanFormats.convertNumber(dato) : '$dato';
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        width: 170,
-        height: 100,
-        color: Colors.blue[400],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              titulo,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontFamily: 'Jost',
-                  fontWeight: FontWeight.bold),
-              maxLines: 2,
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  icon,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 100,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 6),
-                    child: Text(
-                      '$datoFormateado',
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.clip,
-                      style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontFamily: 'Jost'),
-                    ),
+    return FadeIn(
+      delay: Duration(milliseconds: delay),
+      duration: Duration(seconds: 1),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          width: 170,
+          height: 100,
+          color: Colors.blue[400],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                titulo,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'Jost',
+                    fontWeight: FontWeight.bold),
+                maxLines: 2,
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    icon,
+                    color: Colors.white,
                   ),
-                )
-              ],
-            )
-          ],
+                  SizedBox(
+                    width: 100,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 6),
+                      child: Text(
+                        '$datoFormateado',
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.clip,
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontFamily: 'Jost'),
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -278,53 +292,57 @@ class _Rectangle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        width: 340,
-        height: 115,
-        color: Colors.blue[400],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              titulo,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontFamily: 'Jost',
-                  fontWeight: FontWeight.bold),
-              maxLines: 2,
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  icon,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                    width: 200,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 6),
-                      child: Text(
-                        '$dato',
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontFamily: 'Jost'),
-                      ),
-                    )),
-              ],
-            )
-          ],
+    return FadeIn(
+      delay: Duration(milliseconds: 1250),
+      duration: Duration(seconds: 1),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          width: 340,
+          height: 115,
+          color: Colors.blue[400],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                titulo,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'Jost',
+                    fontWeight: FontWeight.bold),
+                maxLines: 2,
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    icon,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                      width: 200,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 6),
+                        child: Text(
+                          '$dato',
+                          maxLines: 3,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontFamily: 'Jost'),
+                        ),
+                      )),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
