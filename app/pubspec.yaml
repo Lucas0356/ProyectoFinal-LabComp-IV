@@ -9,11 +9,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  card_swiper: ^3.0.1
+  intl: ^0.18.1
+  animate_do: ^3.1.2
+
+
+
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/america.png
+    - assets/africa.png
+  fonts:
+      - family: Jost
+        fonts:
+          - asset: fonts/Jost-Regular.ttf
+            weight: 400
+          - asset: fonts/Jost-SemiBold.ttf
+            weight: 600
+          - asset: fonts/Jost-Bold.ttf
+            weight: 700

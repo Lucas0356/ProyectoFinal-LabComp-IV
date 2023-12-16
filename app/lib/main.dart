@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/detalles_pais.dart';
+import 'package:proyecto_final/pais.dart';
+import 'home_screen.dart';
 
 void main() {
   runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      home: const HomeScreen(),
+      routes: {
+        '/home': (context) => const HomeScreen(),
+        '/registro': (context) {
+          final Pais pais = ModalRoute.of(context)?.settings.arguments as Pais;
+          return DetallesPaisScreen(pais: pais);
+        },
+      },
+      initialRoute: '/home', // Ruta inicial
     );
   }
 }
