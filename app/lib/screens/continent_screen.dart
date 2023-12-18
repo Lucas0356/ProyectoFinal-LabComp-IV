@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:proyecto_final/api/continent_service.dart';
 import 'package:proyecto_final/models/pais.dart';
 import 'package:proyecto_final/widgets/pais_tile.dart';
 
@@ -25,55 +23,11 @@ class ContinentScreenState extends State<ContinentScreen> {
   }
 
   Future<List<PaisSimplify>> _getPaises() async {
-    final String baseUrl = dotenv.get('BASE_URL');
+    // Crear una instancia de ContinentService
+    final continentService = ContinentService();
 
-    final String endpoint;
-    if (widget.continentName == "África") {
-      endpoint = "africa/all";
-    } else if (widget.continentName == "América") {
-      endpoint = "america/all";
-    } else {
-      throw Exception("Continente no soportado");
-    }
-
-    final String url = baseUrl + endpoint;
-
-    final String apiKey = dotenv.env['API_KEY']!;
-
-    final response = await http.get(
-      Uri.parse(url),
-      headers: {
-        'api_key': apiKey,
-      },
-    );
-
-    if (response.statusCode == 200) {
-      List<PaisSimplify> parsedPaises = parsePaises(response.body);
-      return parsedPaises;
-    } else {
-      throw Exception("Falló la conexión");
-    }
-  }
-
-  List<PaisSimplify> parsePaises(String responseBody) {
-    final List<dynamic> parsedList;
-
-    // Determina la lista de países según el nombre del continente
-    if (widget.continentName == "África") {
-      parsedList = json.decode(responseBody)["africanCountries"];
-    } else if (widget.continentName == "América") {
-      parsedList = json.decode(responseBody)["americanCountries"];
-    } else {
-      throw Exception("Continente no soportado");
-    }
-
-    return parsedList.map((json) {
-      return PaisSimplify(
-        oficialName: json["name"],
-        flag: json["flag"],
-        capital: List<String>.from(json["capital"]),
-      );
-    }).toList();
+    // Llamar al método en la instancia
+    return continentService.getPaisesPorContinente(widget.continentName);
   }
 
   @override
