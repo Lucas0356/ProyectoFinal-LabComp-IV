@@ -1,16 +1,17 @@
+// Clase que representa la información detallada de un país.
 class Pais {
-  final String oficialName;
-  final String name;
-  final String flag;
-  final String code;
-  final int id;
-  final List<String> languages;
-  final List<String> capital;
-  final int population;
-  final String region;
-  final String subregion;
-  final List<String> borders;
-  final List<String> currencies;
+  final String oficialName; // Nombre oficial del país.
+  final String name; // Nombre del país.
+  final String flag; // Bandera del país.
+  final String code; // Código del país.
+  final int id; // Identificador del país.
+  final List<String> languages; // Lista de idiomas hablados en el país.
+  final List<String> capital; // Lista de capitales del país.
+  final int population; // Población del país.
+  final String region; // Región geográfica del país.
+  final String subregion; // Subregión geográfica del país.
+  final List<String> borders; // Lista de países limítrofes.
+  final List<String> currencies; // Lista de monedas utilizadas en el país.
 
   Pais({
     required this.oficialName,
@@ -270,3 +271,16 @@ var paisesAmerica = <Pais>[
     currencies: ['Panamanian balboa', 'United States dollar'],
   ),
 ];
+
+// Clase que representa una versión simplificada de la información de un país.
+class PaisSimplify {
+  final String oficialName; // Nombre oficial del país.
+  final String flag; // Bandera del país.
+  final List<String> capital; // Lista de capitales del país.
+
+  PaisSimplify({
+    required this.oficialName,
+    required this.flag,
+    required this.capital,
+  });
+}

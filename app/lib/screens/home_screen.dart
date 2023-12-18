@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:proyecto_final/widgets/bottom_navigation.dart';
 import 'package:proyecto_final/screens/continent_screen.dart';
 import 'package:proyecto_final/widgets/home_widget.dart';
-import 'package:proyecto_final/models/pais.dart';
 
 class HomeScreen extends StatefulWidget {
   static const name = 'home-screen';
@@ -32,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           // Página de Continente América
           ContinentScreen(
-            paises: paisesAmerica,
             continentName: 'América',
           ),
           // Página de Inicio
@@ -48,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
           // Página de Continente África
           ContinentScreen(
-            paises: paisesAfrica,
             continentName: 'África',
           ),
         ],
