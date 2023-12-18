@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/detalles_pais.dart';
-import 'package:proyecto_final/pais.dart';
-import 'home_screen.dart';
+import 'package:proyecto_final/screens/detalles_pais_screen.dart';
+import 'package:proyecto_final/models/pais.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MainApp());

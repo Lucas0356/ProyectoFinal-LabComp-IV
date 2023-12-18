@@ -2,8 +2,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/human_formats.dart';
-import 'package:proyecto_final/pais.dart';
+import 'package:proyecto_final/utils/human_formats.dart';
+import 'package:proyecto_final/models/pais.dart';
 
 class DetallesPaisScreen extends StatefulWidget {
   static const name = 'home-screen';
@@ -54,7 +54,7 @@ class _DetallesPaisScreenState extends State<DetallesPaisScreen> {
                   padding: const EdgeInsets.only(top: 20),
                   child: IconButton(
                     icon: Icon(Icons.favorite,
-                        color: selected ? Color(0xFF2F9BFF) : Colors.white),
+                        color: selected ? const Color(0xFF2F9BFF) : Colors.white),
                     onPressed: () {
                       setState(() {
                         selected = !selected; // Actualiza el estado
@@ -79,7 +79,7 @@ class _DetallesPaisScreenState extends State<DetallesPaisScreen> {
 
 // ignore: must_be_immutable
 class _Slide extends StatelessWidget {
-  final contador;
+  final int contador;
 
   const _Slide({required this.contador});
 
@@ -113,7 +113,7 @@ class _Pais extends StatelessWidget {
       children: [
         const SizedBox(height: 10),
         FadeInLeft(
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
           child: ListTile(
             title: Text(item.name,
                 style: const TextStyle(
@@ -133,7 +133,7 @@ class _Pais extends StatelessWidget {
           height: 1,
           width: MediaQuery.of(context).size.width * 0.9,
           color: Colors.black26,
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
         ),
         Padding(
           padding: const EdgeInsets.all(10),
@@ -223,7 +223,7 @@ class _MidRectangle extends StatelessWidget {
 
     return FadeIn(
       delay: Duration(milliseconds: delay),
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
@@ -293,8 +293,8 @@ class _Rectangle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeIn(
-      delay: Duration(milliseconds: 1250),
-      duration: Duration(seconds: 1),
+      delay: const Duration(milliseconds: 1250),
+      duration: const Duration(seconds: 1),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(

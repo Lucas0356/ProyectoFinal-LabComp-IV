@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
+class HomeWidget extends StatelessWidget {
   final VoidCallback onTap;
   final bool iniciando = true;
-  const HomeView({Key? key, required this.onTap}) : super(key: key);
+  const HomeWidget({Key? key, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,8 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FadeInDown(
-                duration: Duration(seconds: 1),
-                child: Text(
+                duration: const Duration(seconds: 1),
+                child: const Text(
                   'NationsExplorer',
                   style: TextStyle(
                       fontFamily: 'Jost', // Fuente que importamos
@@ -37,22 +37,22 @@ class HomeView extends StatelessWidget {
                       fontWeight: FontWeight.w600), // SemiBold
                 ),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'All about countrys of',
                 style: TextStyle(
                     fontFamily: 'Jost', // Fuente que importamos
                     fontSize: 20,
                     fontWeight: FontWeight.w400), // Regular
               ),
-              SizedBox(height: 50),
-              _ContainerPais(
+              const SizedBox(height: 50),
+              const _ContainerPais(
                 asset: 'assets/america.png',
                 text: 'América',
                 left: true,
               ),
-              SizedBox(height: 40),
-              _ContainerPais(
+              const SizedBox(height: 40),
+              const _ContainerPais(
                 asset: 'assets/africa.png',
                 text: 'África',
                 left: false,
@@ -81,7 +81,7 @@ class _ContainerPais extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> row = [
       FadeIn(
-        duration: Duration(seconds: 4),
+        duration: const Duration(seconds: 4),
         child: Container(
           margin: EdgeInsets.only(left: left ? 20 : 0, right: left ? 0 : 20),
           child: Image.asset(
@@ -94,7 +94,7 @@ class _ContainerPais extends StatelessWidget {
       ),
       const Spacer(),
       FadeIn(
-        duration: Duration(seconds: 4),
+        duration: const Duration(seconds: 4),
         child: Container(
           margin: EdgeInsets.only(left: left ? 0 : 20, right: left ? 20 : 0),
           child: Text(

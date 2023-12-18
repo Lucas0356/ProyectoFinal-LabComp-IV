@@ -1,12 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/pais.dart';
+import 'package:proyecto_final/models/pais.dart';
 
-class ContinentView extends StatelessWidget {
+class ContinentScreen extends StatelessWidget {
   final List<Pais> paises;
   final String continentName;
 
-  const ContinentView(
+  const ContinentScreen(
       {Key? key, required this.paises, required this.continentName})
       : super(key: key);
 
@@ -16,7 +16,7 @@ class ContinentView extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 70,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFF2F9BFF),
+        backgroundColor: const Color(0xFF2F9BFF),
         title: Text(
           continentName,
           style: const TextStyle(
@@ -47,13 +47,13 @@ class _PaisTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return FadeInLeft(
       delay: Duration(milliseconds: delay),
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(50),
           child: Container(
-            color: Color(0xFF2F9BFF),
+            color: const Color(0xFF2F9BFF),
             height: 90,
             width: 200,
             child: ListTile(
