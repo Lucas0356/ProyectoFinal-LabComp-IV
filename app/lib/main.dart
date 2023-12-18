@@ -4,10 +4,6 @@ import 'package:proyecto_final/screens/detalles_pais_screen.dart';
 import 'package:proyecto_final/models/pais.dart';
 import 'screens/home_screen.dart';
 
-// void main() {
-//   runApp(const MainApp());
-// }
-
 void main() async {
   await dotenv.load();
   runApp(const MainApp());

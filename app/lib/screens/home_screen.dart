@@ -1,4 +1,3 @@
-// home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/widgets/bottom_navigation.dart';
 import 'package:proyecto_final/screens/continent_screen.dart';
@@ -10,10 +9,10 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController(initialPage: 1);
   int _currentIndex = 1; // Cambiar el valor inicial a 1
 
@@ -30,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           // Página de Continente América
-          ContinentScreen(
+          const ContinentScreen(
             continentName: 'América',
           ),
           // Página de Inicio
@@ -45,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           }),
           // Página de Continente África
-          ContinentScreen(
+          const ContinentScreen(
             continentName: 'África',
           ),
         ],

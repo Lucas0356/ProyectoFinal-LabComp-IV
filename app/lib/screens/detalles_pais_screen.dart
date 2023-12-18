@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:animate_do/animate_do.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
