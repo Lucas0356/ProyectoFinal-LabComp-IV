@@ -1,19 +1,21 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:proyecto_final/models/pais.dart';
+import 'package:proyecto_final/widgets/pais_tile.dart';
 
 class ContinentScreen extends StatefulWidget {
   final String continentName;
 
-  ContinentScreen({Key? key, required this.continentName}) : super(key: key);
+  const ContinentScreen({Key? key, required this.continentName})
+      : super(key: key);
 
   @override
-  _ContinentScreenState createState() => _ContinentScreenState();
+  ContinentScreenState createState() => ContinentScreenState();
 }
 
-class _ContinentScreenState extends State<ContinentScreen> {
+class ContinentScreenState extends State<ContinentScreen> {
   late Future<List<PaisSimplify>> _paises;
 
   @override
@@ -23,24 +25,25 @@ class _ContinentScreenState extends State<ContinentScreen> {
   }
 
   Future<List<PaisSimplify>> _getPaises() async {
-    final String url;
+    final String baseUrl = dotenv.get('BASE_URL');
 
-    // Determina la URL según el nombre del continente
+    final String endpoint;
     if (widget.continentName == "África") {
-      url =
-          "https://api-express-js-coutries-continents.onrender.com/api/v1/countries/africa/all";
+      endpoint = "africa/all";
     } else if (widget.continentName == "América") {
-      url =
-          "https://api-express-js-coutries-continents.onrender.com/api/v1/countries/america/all";
+      endpoint = "america/all";
     } else {
       throw Exception("Continente no soportado");
     }
 
+    final String url = baseUrl + endpoint;
+
+    final String apiKey = dotenv.env['API_KEY']!;
+
     final response = await http.get(
       Uri.parse(url),
       headers: {
-        'api_key':
-            'M2QxCkPvTLMic3p', // Agrega la clave de API para autenticación.
+        'api_key': apiKey,
       },
     );
 
@@ -100,7 +103,7 @@ class _ContinentScreenState extends State<ContinentScreen> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                return _PaisTile(
+                return PaisTile(
                   paisSimplify: snapshot.data![index],
                   delay: index * 150,
                 );
@@ -108,62 +111,6 @@ class _ContinentScreenState extends State<ContinentScreen> {
             );
           }
         },
-      ),
-    );
-  }
-}
-
-class _PaisTile extends StatelessWidget {
-  final PaisSimplify paisSimplify;
-  final int delay;
-
-  const _PaisTile({Key? key, required this.paisSimplify, required this.delay})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInLeft(
-      delay: Duration(milliseconds: delay),
-      duration: const Duration(seconds: 1),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(50),
-          child: Container(
-            color: const Color(0xFF2F9BFF),
-            height: 90,
-            width: 200,
-            child: ListTile(
-              title: Text(
-                paisSimplify.oficialName, // Acceder a la propiedad correcta
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                    fontFamily: 'Jost',
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white),
-              ),
-              subtitle: Text(paisSimplify.capital[0],
-                  style: const TextStyle(
-                      fontFamily: 'Jost',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white54)),
-              leading: Text(
-                paisSimplify.flag,
-                style: const TextStyle(fontSize: 35),
-              ),
-              minLeadingWidth: 40,
-              onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   '/registro',
-                //   arguments: paisSimplify,
-                // );
-              },
-            ),
-          ),
-        ),
       ),
     );
   }
