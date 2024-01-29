@@ -13,7 +13,9 @@ dependencies:
   card_swiper: ^3.0.1
   intl: ^0.18.1
   animate_do: ^3.1.2
-  http: ^1.1.2
+  dio: ^5.3.4
+  flutter_riverpod: ^2.4.9
+  go_router: ^12.1.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -25,6 +27,7 @@ flutter:
   assets:
     - assets/america.png
     - assets/africa.png
+    - .env
   fonts:
       - family: Jost
         fonts:

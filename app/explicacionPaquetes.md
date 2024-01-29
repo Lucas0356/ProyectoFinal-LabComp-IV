@@ -12,3 +12,5 @@ Link: https://pub.dev/packages/intl
 
 - Animate Do: Este paquete fue creado por Fernando Herrera, y se utiliza para animar la entrada o salida de los widgets. Se utiliza muy fácilmente, solo se tiene que envolver al widget que deseamos animar con la animación deseada y listo.
 Link: https://pub.dev/packages/animate_do
+
+
