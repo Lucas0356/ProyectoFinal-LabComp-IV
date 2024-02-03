@@ -17,11 +17,8 @@ class ApiExpressResponse {
       ApiExpressResponse(
         status: json["status"],
         countryCount: json["countryCount"],
-        countries: (json['americanCountries'] == null)
-            ? List<PaisFromApiExpress>.from(json["africanCountries"]
-                .map((x) => PaisFromApiExpress.fromJson(x)))
-            : List<PaisFromApiExpress>.from(json["americanCountries"]
-                .map((x) => PaisFromApiExpress.fromJson(x))),
+        countries: List<PaisFromApiExpress>.from(
+            json["countries"].map((x) => PaisFromApiExpress.fromJson(x))),
         statusText: json["statusText"],
       );
 

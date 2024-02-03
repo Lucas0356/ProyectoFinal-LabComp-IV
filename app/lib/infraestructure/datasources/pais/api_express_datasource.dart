@@ -15,8 +15,7 @@ de mañana queremos utilizar otra API, solo tendríamos que crear una nueva clas
 class ApiExpressDatasource extends PaisDataSource {
   final dio = Dio(
     BaseOptions(
-      baseUrl:
-          'https://api-express-js-coutries-continents.onrender.com/api/v1/countries/',
+      baseUrl: 'https://api-express-continents.onrender.com/api/v1/countries/',
       headers: {
         'api_key': Environment.restCountriesApiKey,
       },
@@ -49,15 +48,9 @@ class ApiExpressDatasource extends PaisDataSource {
   }
 
   @override
-  Future<Pais> getPais(String paisID, String continent, String code) async {
+  Future<Pais> getPais(String paisID, String continent) async {
     // ignore: prefer_typing_uninitialized_variables
-    var response;
-    switch (continent) {
-      case 'África':
-        response = await dio.get('/africa/$paisID');
-      case 'América':
-        response = await dio.get('/america/$code');
-    }
+    final response = await dio.get('/$continent/$paisID');
 
     if (response.statusCode != 200) {
       throw Exception('No se encontró ningún país con el ID: $paisID');

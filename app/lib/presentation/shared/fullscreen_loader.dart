@@ -29,15 +29,13 @@ class FullScreenLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
-
     return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           'Espere por favor',
-          style: textStyle.titleMedium,
+          style: style(Colors.white, 30, FontWeight.bold),
         ),
         const SizedBox(height: 30),
         const CircularProgressIndicator(
@@ -51,16 +49,20 @@ class FullScreenLoader extends StatelessWidget {
             if (!snapshot.hasData) {
               return Text(
                 'Cargando ...',
-                style: textStyle.titleSmall,
+                style: style(Colors.white, 15, FontWeight.w100),
               );
             }
             return Text(
               snapshot.data!,
-              style: textStyle.titleSmall,
+              style: style(Colors.white, 15, FontWeight.w100),
             );
           },
         )
       ],
     ));
   }
+}
+
+TextStyle style(Color color, double size, FontWeight weight) {
+  return TextStyle(color: color, fontSize: size, fontWeight: weight);
 }

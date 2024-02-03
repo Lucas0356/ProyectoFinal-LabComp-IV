@@ -30,7 +30,7 @@ class HomeScreenState extends State<HomeScreen> {
         children: [
           // Página de Continente América
           const ContinentScreen(
-            continentName: 'América',
+            continentName: 'America',
           ),
           // Página de Inicio
           HomeWidget(onTap: () {
@@ -45,7 +45,7 @@ class HomeScreenState extends State<HomeScreen> {
           }),
           // Página de Continente África
           const ContinentScreen(
-            continentName: 'África',
+            continentName: 'Africa',
           ),
         ],
       ),

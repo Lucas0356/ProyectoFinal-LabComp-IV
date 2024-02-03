@@ -13,28 +13,34 @@ class ContinentScreen extends ConsumerStatefulWidget {
   ContinentScreenState createState() => ContinentScreenState();
 }
 
-class ContinentScreenState extends ConsumerState<ContinentScreen> {
+// Al usar el AutomaticKeepAliveClientMixin, lo que podemos hacer es mantener el 'estado' de la pantalla, es decir
+// que si hacemos scroll, navegamos a otra, y volvemos, el scroll queda donde estaba.
+
+class ContinentScreenState extends ConsumerState<ContinentScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
     switch (widget.continentName) {
-      case 'África':
-        ref.read(getAfricaProvider.notifier).loadContinent();
-      case 'América':
+      case 'America':
         ref.read(getAmericaProvider.notifier).loadContinent();
+      case 'Africa':
+        ref.read(getAfricaProvider.notifier).loadContinent();
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final color = Theme.of(context).primaryColor;
     var paises = [];
     switch (widget.continentName) {
-      case 'África':
-        paises = ref.watch(getAfricaProvider);
-      case 'América':
+      case 'America':
         paises = ref.watch(getAmericaProvider);
+      case 'Africa':
+        paises = ref.watch(getAfricaProvider);
     }
+
     if (paises.isEmpty) return const FullScreenLoader();
 
     return Scaffold(
@@ -54,11 +60,11 @@ class ContinentScreenState extends ConsumerState<ContinentScreen> {
           itemBuilder: (context, index) {
             final pais = paises[index];
             return PaisTile(
-              continent: widget.continentName,
-              paisSimplify: pais,
-              delay: index * 150,
-            );
+                continent: widget.continentName, paisSimplify: pais);
           },
         ));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

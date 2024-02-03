@@ -2,13 +2,22 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/config/pais_items.dart/pais_items.dart';
 
-class HomeWidget extends StatelessWidget {
+class HomeWidget extends StatefulWidget {
   final VoidCallback onTap;
-  final bool iniciando = true;
+
   const HomeWidget({Key? key, required this.onTap}) : super(key: key);
 
   @override
+  State<HomeWidget> createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget>
+    with AutomaticKeepAliveClientMixin {
+  final bool iniciando = true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     final size = MediaQuery.of(context).size;
     var left = false;
 
@@ -65,6 +74,9 @@ class HomeWidget extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _ContainerPais extends StatelessWidget {
@@ -87,7 +99,7 @@ class _ContainerPais extends StatelessWidget {
     // Definimos la fila previamente, para invertirla si es que es necesario.
     List<Widget> row = [
       FadeIn(
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: 2),
         child: Container(
           margin: EdgeInsets.only(left: left ? 20 : 0, right: left ? 0 : 20),
           child: Image.asset(
@@ -100,7 +112,7 @@ class _ContainerPais extends StatelessWidget {
       ),
       const Spacer(),
       FadeIn(
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: 2),
         child: Container(
           margin: EdgeInsets.only(left: left ? 0 : 20, right: left ? 20 : 0),
           child: Text(

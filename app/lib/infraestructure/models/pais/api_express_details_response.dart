@@ -16,7 +16,7 @@ class ApiExpressDetailsResponse {
   factory ApiExpressDetailsResponse.fromJson(Map<String, dynamic> json) =>
       ApiExpressDetailsResponse(
         status: json["status"],
-        countryCount: (json["countryCount"] == null) ? 0 : json["countryCount"],
+        countryCount: json["countryCount"] ?? 0,
         country: List<PaisDetailsFromApiExpress>.from(
             json["country"].map((x) => PaisDetailsFromApiExpress.fromJson(x))),
         statusText: json["statusText"],

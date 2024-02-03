@@ -4,16 +4,16 @@ import 'package:proyecto_final/presentation/providers/pais/pais_repository_provi
 
 final getAfricaProvider =
     StateNotifierProvider<PaisSimplifyNotifier, List<PaisSimplify>>((ref) {
-  final getAfrica = ref.watch(paisRepositoryProvider).getAfrica;
+  final getContinent = ref.watch(paisRepositoryProvider).getAfrica;
 
-  return PaisSimplifyNotifier(getContinent: getAfrica);
+  return PaisSimplifyNotifier(getContinent: getContinent);
 });
 
 final getAmericaProvider =
     StateNotifierProvider<PaisSimplifyNotifier, List<PaisSimplify>>((ref) {
-  final getAmerica = ref.watch(paisRepositoryProvider).getAmerica;
+  final getContinent = ref.watch(paisRepositoryProvider).getAmerica;
 
-  return PaisSimplifyNotifier(getContinent: getAmerica);
+  return PaisSimplifyNotifier(getContinent: getContinent);
 });
 
 typedef PaisSimplifyCallback = Future<List<PaisSimplify>> Function();
@@ -30,7 +30,7 @@ class PaisSimplifyNotifier extends StateNotifier<List<PaisSimplify>> {
     isLoading = true;
     final List<PaisSimplify> paises = await getContinent();
 
-    state = [...state, ...paises];
+    state = [...paises];
     await Future.delayed(const Duration(milliseconds: 300));
     isLoading = false;
   }

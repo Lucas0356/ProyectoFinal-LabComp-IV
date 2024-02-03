@@ -15,6 +15,11 @@ class PaisRepositoryImpl extends PaisRepository {
   PaisRepositoryImpl(this.paisDataSource);
 
   @override
+  Future<Pais> getPais(String paisID, String continent) {
+    return paisDataSource.getPais(paisID, continent);
+  }
+
+  @override
   Future<List<PaisSimplify>> getAfrica() {
     return paisDataSource.getAfrica();
   }
@@ -22,10 +27,5 @@ class PaisRepositoryImpl extends PaisRepository {
   @override
   Future<List<PaisSimplify>> getAmerica() {
     return paisDataSource.getAmerica();
-  }
-
-  @override
-  Future<Pais> getPais(String paisID, String continent, String code) {
-    return paisDataSource.getPais(paisID, continent, code);
   }
 }

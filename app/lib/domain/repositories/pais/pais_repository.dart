@@ -7,7 +7,8 @@ la función del repository solo es llamar al datasource, cumpliendo así con una
 */
 
 abstract class PaisRepository {
-  Future<List<PaisSimplify>> getAmerica();
   Future<List<PaisSimplify>> getAfrica();
-  Future<Pais> getPais(String paisID, String continent, String code);
+  Future<List<PaisSimplify>> getAmerica();
+
+  Future<Pais> getPais(String paisID, String continent);
 }

@@ -25,10 +25,7 @@ class DetallesPaisScreenState extends ConsumerState<DetallesPaisScreen> {
   void initState() {
     final query = ref.read(nameSelectedProvider.notifier).state;
     final continent = ref.read(continentSelectedProvider.notifier).state;
-    final code = ref.read(codeSelectedProvider.notifier).state;
-    ref
-        .read(getPaisByIDProvider.notifier)
-        .loadPais(widget.paisID, continent, code);
+    ref.read(getPaisByIDProvider.notifier).loadPais(widget.paisID, continent);
     ref.read(getPhotosProvider.notifier).loadImages(query);
     super.initState();
   }

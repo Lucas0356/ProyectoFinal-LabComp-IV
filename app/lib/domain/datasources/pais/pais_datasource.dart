@@ -7,7 +7,8 @@ esté adpatado, cumpliendo así con el principio de OPEN-CLOSE. En caso de utili
 */
 
 abstract class PaisDataSource {
-  Future<List<PaisSimplify>> getAmerica();
   Future<List<PaisSimplify>> getAfrica();
-  Future<Pais> getPais(String paisID, String continent, String code);
+  Future<List<PaisSimplify>> getAmerica();
+
+  Future<Pais> getPais(String paisID, String continent);
 }
