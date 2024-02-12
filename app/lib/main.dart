@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/detalles_pais.dart';
-import 'package:proyecto_final/pais.dart';
-import 'home_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:proyecto_final/config/router/app_router.dart';
+import 'presentation/presentation.dart';
 
-void main() {
-  runApp(const MainApp());
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
+  runApp(ProviderScope(child: MainApp()));
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({Key? key}) : super(key: key);
+class MainApp extends ConsumerWidget {
+  MainApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const HomeScreen(),
-      routes: {
-        '/home': (context) => const HomeScreen(),
-        '/registro': (context) {
-          final Pais pais = ModalRoute.of(context)?.settings.arguments as Pais;
-          return DetallesPaisScreen(pais: pais);
-        },
-      },
-      initialRoute: '/home', // Ruta inicial
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appTheme = ref.watch(themeNotifierProvider);
+
+    return MaterialApp.router(
+      theme: appTheme.getTheme(),
+      routerConfig: appRouter,
+      debugShowCheckedModeBanner: false, // Ruta inicial
     );
   }
 }
