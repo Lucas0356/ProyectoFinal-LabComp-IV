@@ -1,11 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:proyecto_final/config/constants/environment.dart';
 import 'package:proyecto_final/domain/datasources/pais/pais_datasource.dart';
-import 'package:proyecto_final/domain/entities/pais/pais.dart';
-import 'package:proyecto_final/domain/entities/pais/pais_simplify.dart';
-import 'package:proyecto_final/infraestructure/mappers/pais/pais_mapper.dart';
-import 'package:proyecto_final/infraestructure/models/pais/api_express_details_response.dart';
-import 'package:proyecto_final/infraestructure/models/pais/api_express_response.dart';
+import 'package:proyecto_final/domain/entities/entities.dart';
+import 'package:proyecto_final/infraestructure/infraestructure.dart';
 
 /*
 Esta implementación de PaisDataSource, es propia de la api de ApiExpress. Si el día

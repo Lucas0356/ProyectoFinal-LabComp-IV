@@ -1,17 +1,17 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:proyecto_final/config/pais_items.dart/pais_items.dart';
+import 'package:proyecto_final/presentation/providers/providers.dart';
 
-class HomeWidget extends StatefulWidget {
-  final VoidCallback onTap;
-
-  const HomeWidget({Key? key, required this.onTap}) : super(key: key);
+class HomeWidget extends ConsumerStatefulWidget {
+  const HomeWidget({Key? key}) : super(key: key);
 
   @override
-  State<HomeWidget> createState() => _HomeWidgetState();
+  HomeWidgetState createState() => HomeWidgetState();
 }
 
-class _HomeWidgetState extends State<HomeWidget>
+class HomeWidgetState extends ConsumerState<HomeWidget>
     with AutomaticKeepAliveClientMixin {
   final bool iniciando = true;
 
@@ -20,57 +20,85 @@ class _HomeWidgetState extends State<HomeWidget>
     super.build(context);
     final size = MediaQuery.of(context).size;
     var left = false;
+    final color = Theme.of(context).colorScheme;
+    final bool isDarkMode = ref.watch(themeNotifierProvider).isDarkMode;
 
     // Container de Fondo
-    return Container(
-      height: size.height * 0.85,
-      margin: EdgeInsets.only(
-          top: size.height * 0.10,
-          left: size.height * 0.02,
-          right: size.height * 0.02),
-      decoration: const BoxDecoration(
-        color: Color.fromRGBO(
-            235, 235, 235, 1), // Color de fondo del contenedor principal
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(50.0),
-          topRight: Radius.circular(50.0),
-        ),
+    return Scaffold(
+      backgroundColor: color.primary,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: color.primary,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: IconButton(
+                onPressed: () {
+                  ref.read(themeNotifierProvider.notifier).toggleDarkMode();
+                },
+                color: color.onPrimary,
+                icon: isDarkMode
+                    ? const Icon(Icons.light_mode_outlined)
+                    : const Icon(Icons.dark_mode_outlined)),
+          )
+        ],
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: size.height * 0.04,
-          ),
-          FadeInDown(
-            duration: const Duration(seconds: 1),
-            child: Text(
-              'NationsExplorer',
-              style: TextStyle(
-                  fontSize: size.height * 0.05,
-                  fontWeight: FontWeight.w600), // SemiBold
+      body: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Container(
+          height: size.height * 0.85,
+          margin: EdgeInsets.only(
+              top: size.height * 0.10,
+              left: size.height * 0.02,
+              right: size.height * 0.02),
+          decoration: const BoxDecoration(
+            color: Color.fromRGBO(
+                235, 235, 235, 1), // Color de fondo del contenedor principal
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(50.0),
+              topRight: Radius.circular(50.0),
             ),
           ),
-          const SizedBox(height: 16),
-          Text(
-            'All about countrys of',
-            style: TextStyle(
-                fontFamily: 'Jost', // Fuente que importamos
-                fontSize: size.height * 0.03,
-                fontWeight: FontWeight.w400), // Regular
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              FadeInDown(
+                duration: const Duration(seconds: 1),
+                child: Text(
+                  'NationsExplorer',
+                  style: TextStyle(
+                      color: color.onBackground,
+                      fontSize: size.height * 0.05,
+                      fontWeight: FontWeight.w600), // SemiBold
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'All about countrys of',
+                style: TextStyle(
+                    color: color.onBackground,
+                    fontSize: size.height * 0.03,
+                    fontWeight: FontWeight.w400), // Regular
+              ),
+              // Acá se empiezan a mostrar los continentes disponibles.
+              Expanded(
+                child: ListView(
+                  children: [
+                    // Dibuja los continentes cargados en paisItems.
+                    ...paisItems.map((pais) {
+                      left = !left;
+                      return _ContainerPais(
+                          asset: pais.asset, text: pais.text, left: left);
+                    })
+                  ],
+                ),
+              ),
+            ],
           ),
-          // Acá se empiezan a mostrar los continentes disponibles.
-          Expanded(
-            child: ListView(children: [
-              // Dibuja los continentes cargados en paisItems.
-              ...paisItems.map((pais) {
-                left = !left;
-                return _ContainerPais(
-                    asset: pais.asset, text: pais.text, left: left);
-              })
-            ]),
-          ),
-        ],
+        ),
       ),
     );
   }

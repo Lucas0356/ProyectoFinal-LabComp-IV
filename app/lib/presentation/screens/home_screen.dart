@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/presentation/shared/shareds.dart';
-import 'package:proyecto_final/presentation/screens/continent_screen.dart';
-import 'package:proyecto_final/presentation/widgets/home_widget.dart';
+import '../presentation.dart';
 
 class HomeScreen extends StatefulWidget {
   static const name = 'home-screen';
@@ -21,30 +19,22 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: PageView(
         controller: _pageController,
+        // Si el usuario cambia de página scrolleando (izq o der) actualizamos el currentIndex
         onPageChanged: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
         physics: const NeverScrollableScrollPhysics(),
-        children: [
-          // Página de Continente América
-          const ContinentScreen(
+        children: const [
+          // Página de Continente América (0)
+          ContinentScreen(
             continentName: 'America',
           ),
-          // Página de Inicio
-          HomeWidget(onTap: () {
-            if (_currentIndex == 1) {
-              // Si ya estamos en la página de inicio, no hacemos nada
-              return;
-            }
-            _pageController.jumpToPage(1);
-            setState(() {
-              _currentIndex = 1;
-            });
-          }),
-          // Página de Continente África
-          const ContinentScreen(
+          // Página de Inicio (1)
+          HomeWidget(),
+          // Página de Continente África (2)
+          ContinentScreen(
             continentName: 'Africa',
           ),
         ],
@@ -52,18 +42,18 @@ class HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigation(
         currentIndex: _currentIndex,
         onPageChanged: (index) {
-          // Si te moves a una página paralela a la actual, se hace la animación sino no.
-          if (_currentIndex - index == 1 ||
-              _currentIndex - index == -1 ||
-              _currentIndex - index == 0) {
+          if (_currentIndex == index) return;
+          // Si te moves a una página paralela a la actual, no se hace la animación de paginado.
+          if (_currentIndex == 0 && index == 2 ||
+              _currentIndex == 2 && index == 0) {
+            _pageController.jumpToPage(
+              index,
+            );
+          } else {
             _pageController.animateToPage(
               index,
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut,
-            );
-          } else {
-            _pageController.jumpToPage(
-              index,
             );
           }
         },

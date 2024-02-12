@@ -1,5 +1,4 @@
-import 'package:proyecto_final/domain/entities/pais/pais.dart';
-import 'package:proyecto_final/domain/entities/pais/pais_simplify.dart';
+import 'package:proyecto_final/domain/entities/entities.dart';
 
 /* El datasource en domain es una clase abstracta, para que el día de mañana, si implementamos otra API, todo
 esté adpatado, cumpliendo así con el principio de OPEN-CLOSE. En caso de utilizar otra API, dentro de

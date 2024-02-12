@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:proyecto_final/presentation/providers/pais/pais_simplify_providers.dart';
-import 'package:proyecto_final/presentation/shared/shareds.dart';
-import 'package:proyecto_final/presentation/widgets/pais_tile.dart';
+
+import '../presentation.dart';
 
 class ContinentScreen extends ConsumerStatefulWidget {
   final String continentName;
@@ -32,7 +31,7 @@ class ContinentScreenState extends ConsumerState<ContinentScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final color = Theme.of(context).primaryColor;
+    final colors = Theme.of(context).colorScheme;
     var paises = [];
     switch (widget.continentName) {
       case 'America':
@@ -41,14 +40,19 @@ class ContinentScreenState extends ConsumerState<ContinentScreen>
         paises = ref.watch(getAfricaProvider);
     }
 
-    if (paises.isEmpty) return const FullScreenLoader();
+    if (paises.isEmpty) {
+      return Scaffold(
+        body: const FullScreenLoader(),
+        backgroundColor: colors.primary,
+      );
+    }
 
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           toolbarHeight: 70,
           automaticallyImplyLeading: false,
-          backgroundColor: color,
+          backgroundColor: colors.primary,
           title: Text(
             widget.continentName,
             style: const TextStyle(

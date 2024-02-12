@@ -28,14 +28,12 @@ class PaisTile extends ConsumerWidget {
               paisSimplify.name, // Acceder a la propiedad correcta
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontFamily: 'Jost',
                   fontSize: 30,
                   fontWeight: FontWeight.w600,
                   color: Colors.white),
             ),
             subtitle: Text(paisSimplify.capital,
                 style: const TextStyle(
-                    fontFamily: 'Jost',
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: Colors.white54)),

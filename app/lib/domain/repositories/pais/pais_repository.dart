@@ -1,5 +1,4 @@
-import 'package:proyecto_final/domain/entities/pais/pais.dart';
-import 'package:proyecto_final/domain/entities/pais/pais_simplify.dart';
+import 'package:proyecto_final/domain/entities/entities.dart';
 
 /* 
 El repository en domain es una clase abstracta, por el mismo motivo que el datasource. Por si no se entiende,

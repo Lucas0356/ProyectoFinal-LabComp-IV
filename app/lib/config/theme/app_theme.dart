@@ -1,34 +1,44 @@
 import 'package:flutter/material.dart';
 
-const colorList = <Color>[
-  Color(0xFF2F9BFF),
-  Colors.teal,
-  Colors.green,
-  Colors.red,
-  Colors.purple,
-  Colors.deepPurple,
-  Colors.orange
-];
+const primaryColor = Color(0xFF2F9BFF);
+const primaryyColor = Color(0xFF4d3a87);
 
 class AppTheme {
-  final int selectedColor;
   final bool isDarkMode;
 
-  AppTheme({this.selectedColor = 0, this.isDarkMode = false})
-      : assert(selectedColor >= 0, 'El color seleccionado debe ser mayor a 0.'),
-        assert(selectedColor < colorList.length,
-            'El color seleccionado debe ser igual o menor a ${colorList.length - 1}.');
+  AppTheme({this.isDarkMode = false});
 
   ThemeData getTheme() => ThemeData(
+      brightness: isDarkMode ? Brightness.dark : Brightness.light,
       useMaterial3: true,
-      primaryColor: colorList[selectedColor],
-      colorScheme:
-          ColorScheme.fromSwatch().copyWith(primary: colorList[selectedColor]),
+      colorScheme: getColorScheme(isDarkMode),
       fontFamily: 'Jost',
-      scaffoldBackgroundColor: colorList[selectedColor],
+      scaffoldBackgroundColor:
+          isDarkMode ? const Color.fromARGB(255, 23, 23, 24) : Colors.white,
       appBarTheme: const AppBarTheme());
 
-  AppTheme copyWith({int? selectedColor, bool? isDarkMode}) => AppTheme(
-      selectedColor: selectedColor ?? this.selectedColor,
-      isDarkMode: isDarkMode ?? this.isDarkMode);
+  ColorScheme getColorScheme(bool isDarkMode) {
+    if (isDarkMode) {
+      return const ColorScheme.dark(
+        primary: primaryyColor,
+        secondary: Color.fromARGB(255, 38, 36, 36),
+        onPrimary: Colors.white,
+        onBackground: Colors.black,
+        onSecondary: Colors.white,
+        inversePrimary: primaryyColor,
+        onSurface: Colors.white,
+      );
+    }
+    return const ColorScheme.light(
+        primary: primaryColor,
+        secondary: Colors.white,
+        onBackground: Colors.black,
+        onPrimary: Colors.white,
+        onSecondary: Colors.black,
+        inversePrimary: Colors.black54,
+        onSurface: primaryColor);
+  }
+
+  AppTheme copyWith({bool? isDarkMode}) =>
+      AppTheme(isDarkMode: isDarkMode ?? this.isDarkMode);
 }

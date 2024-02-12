@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -14,10 +13,12 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return SizedBox(
       height: max(MediaQuery.of(context).size.height * 0.10, 90),
       child: BottomAppBar(
-        color: Colors.white,
+        color: colors.secondary,
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Row(
@@ -58,7 +59,7 @@ class BottomNavigation extends StatelessWidget {
 }
 
 class IconBottomBar extends StatelessWidget {
-  IconBottomBar({
+  const IconBottomBar({
     Key? key,
     required this.text,
     required this.icon,
@@ -73,7 +74,7 @@ class IconBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).primaryColor;
+    final colors = Theme.of(context).colorScheme;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -83,14 +84,14 @@ class IconBottomBar extends StatelessWidget {
             onPressed: onPressed,
             icon: Icon(
               icon,
-              color: selected ? color : Colors.black54,
+              color: selected ? colors.onSurface : colors.inversePrimary,
             ),
           ),
           Text(
             text,
             style: TextStyle(
               fontSize: 10,
-              color: selected ? color : Colors.black54,
+              color: selected ? colors.onSurface : colors.inversePrimary,
             ),
           ),
         ],

@@ -5,4 +5,8 @@ class HumanFormats {
     final formattedNumber = NumberFormat('#,##0', 'es_ES').format(number);
     return formattedNumber;
   }
+
+  static String listToString(List<String> items) {
+    return '${items.take(items.length - 1).join(', ')}${items.length > 1 ? ', ' : ''}${items.last}.';
+  }
 }
