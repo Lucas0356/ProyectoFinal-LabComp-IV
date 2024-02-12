@@ -14,13 +14,13 @@ class PaisTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final color = Theme.of(context).primaryColor;
+    final colors = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(50),
         child: Container(
-          color: color,
+          color: colors.primary,
           height: 90,
           width: 200,
           child: ListTile(

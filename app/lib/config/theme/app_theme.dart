@@ -20,14 +20,13 @@ class AppTheme {
   ColorScheme getColorScheme(bool isDarkMode) {
     if (isDarkMode) {
       return const ColorScheme.dark(
-        primary: primaryyColor,
-        secondary: Color.fromARGB(255, 38, 36, 36),
-        onPrimary: Colors.white,
-        onBackground: Colors.black,
-        onSecondary: Colors.white,
-        inversePrimary: primaryyColor,
-        onSurface: Colors.white,
-      );
+          primary: primaryyColor,
+          secondary: Color.fromARGB(255, 45, 37, 69),
+          onPrimary: Colors.white,
+          onBackground: Colors.black,
+          onSecondary: Colors.white,
+          onSurface: Colors.white,
+          background: Colors.black);
     }
     return const ColorScheme.light(
         primary: primaryColor,
@@ -35,8 +34,8 @@ class AppTheme {
         onBackground: Colors.black,
         onPrimary: Colors.white,
         onSecondary: Colors.black,
-        inversePrimary: Colors.black54,
-        onSurface: primaryColor);
+        onSurface: primaryColor,
+        background: Colors.white);
   }
 
   AppTheme copyWith({bool? isDarkMode}) =>

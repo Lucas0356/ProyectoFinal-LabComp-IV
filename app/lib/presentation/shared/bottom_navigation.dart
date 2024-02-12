@@ -84,14 +84,14 @@ class IconBottomBar extends StatelessWidget {
             onPressed: onPressed,
             icon: Icon(
               icon,
-              color: selected ? colors.onSurface : colors.inversePrimary,
+              color: selected ? colors.onSurface : Colors.black54,
             ),
           ),
           Text(
             text,
             style: TextStyle(
               fontSize: 10,
-              color: selected ? colors.onSurface : colors.inversePrimary,
+              color: selected ? colors.onSurface : Colors.black54,
             ),
           ),
         ],

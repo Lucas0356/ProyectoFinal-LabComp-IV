@@ -122,7 +122,7 @@ class _ContainerPais extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final color = Theme.of(context).primaryColor;
+    final colors = Theme.of(context).colorScheme;
 
     // Definimos la fila previamente, para invertirla si es que es necesario.
     List<Widget> row = [
@@ -161,7 +161,7 @@ class _ContainerPais extends StatelessWidget {
         width: size.width * 0.8,
         height: size.height * 0.21,
         decoration: BoxDecoration(
-          color: color,
+          color: colors.primary,
           borderRadius: BorderRadius.circular(30.0),
         ),
         child: Row(

@@ -48,7 +48,7 @@ class ContinentScreenState extends ConsumerState<ContinentScreen>
     }
 
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: colors.background,
         appBar: AppBar(
           toolbarHeight: 70,
           automaticallyImplyLeading: false,
