@@ -6,11 +6,11 @@ import 'presentation/presentation.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
-  runApp(ProviderScope(child: MainApp()));
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends ConsumerWidget {
-  MainApp({Key? key}) : super(key: key);
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

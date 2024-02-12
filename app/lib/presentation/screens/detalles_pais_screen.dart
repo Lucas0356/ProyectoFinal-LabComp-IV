@@ -152,7 +152,7 @@ class _InfoPais extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
-                    color: colors.onPrimary)),
+                    color: colors.onSecondary)),
             subtitle: Text('Country of ${item.subregion}',
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.w200)),

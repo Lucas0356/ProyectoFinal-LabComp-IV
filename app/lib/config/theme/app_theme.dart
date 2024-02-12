@@ -26,7 +26,7 @@ class AppTheme {
           onBackground: Colors.black,
           onSecondary: Colors.white,
           onSurface: Colors.white,
-          background: Colors.black);
+          background: Color.fromARGB(255, 34, 31, 31));
     }
     return const ColorScheme.light(
         primary: primaryColor,
